@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Creation-shop</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">creation-shop</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="shopForm" (ngSubmit)="createShop()">
+
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="address" type="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('addres')?.hasError('required') && getFormControl('address')?.touched">
+      The address is required.
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Telephone</ion-label>
+      <ion-input formControlName="telephone" type="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('telephone')?.hasError('required') && getFormControl('telephone')?.touched">
+      The telephone is required.
+    </ion-note>
+
+    <ion-button type="submit" [disabled]="!shopForm.valid">Create</ion-button>
+    <ion-button (click)="goHome()">Home</ion-button>
+
+  </form>
+
+</ion-content>
