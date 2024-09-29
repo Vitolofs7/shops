@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShopService } from '../services/shop.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-shop',
@@ -8,36 +8,46 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./update-shop.page.scss'],
 })
 export class UpdateShopPage implements OnInit {
+  shop: any = {}; // Objeto para almacenar los datos de la tienda
 
- /*  shopId: any;
-  shop: any = { address: '', telephone: ''}; */
-  
-
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private shopService: ShopService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id'); // Obtener el ID de la tienda de la URL
+    console.log('ID de la tienda:', id); // Verificar que el ID es válido
+    if (id) {
+      this.loadShop(id);
+    } else {
+      console.error("ID no válido o no proporcionado.");
+    }
+  }
 
-    /* // Recupero la id desde la URL y la guardo en la variable shopId
-    this.shopId = this.route.snapshot.paramMap.get('id');
-
-    this.shopService.getShopById(this.shopId).subscribe(
-      (data: any) => {
+  loadShop(id: string) {
+    this.shopService.getShopById(id).subscribe(
+      (data: any) => { // Añadir tipo explícito
         this.shop = data;
       },
-      (error) => {
-        console.error('Error fetching shop data', error);
+      (error: any) => { // Añadir tipo explícito
+        console.error('Error al cargar los datos de la tienda:', error);
       }
     );
-  } */
+  }
 
-  /* updateShop() {
-    this.shopService.update(this.shopId, this.shop).subscribe(
-      (response) => {
-        console.log('Shop updated successfully', response);
-      },
-      (error) => {
-        console.error('Error updating shop: ', error);
-      }
+  updateShop() {
+    console.log('Datos de la tienda a actualizar:', this.shop); // Verificar el contenido
+    this.shopService.update(this.shop.id, this.shop).subscribe(
+        (response: any) => {
+            console.log('Tienda actualizada exitosamente:', response);
+            this.router.navigate(['/shop-list']);
+        },
+        (error: any) => {
+            console.error('Error al actualizar la tienda:', error);
+        }
     );
-  } */
-}}
+}
+
+}

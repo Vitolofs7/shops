@@ -23,7 +23,7 @@ export class ShopListPage implements OnInit {
   /*Existen dos maneras de manejar las llamadas asincronas, con promesas
   y con suscripciones - Te suscribes al servicio que te devuelve todas las
   tiendas, y en algún momento te llega, y el programa continúa*/
-  getAllShops(){
+  getAllShops() {
     this.shopService.getAll().subscribe(data => {
       console.log("Llegaron los datos.")
       console.log(data)
@@ -31,19 +31,19 @@ export class ShopListPage implements OnInit {
     })
   }
 
-  deleteThis(id: any){
+  deleteThis(id: any) {
     this.shopService.delete(id).subscribe(res => {
       this.getAllShops();
       console.log("Se ha borrado.")
     })
   }
 
-  /* updateThis(id: any){
+  updateThis(id: any) {
     this.router.navigate(['/update-shop', id]); // el this es porque la variable pertenece a esta clase
-  } */
-    goHome(){
-      this.router.navigateByUrl("/");
-    }
+  }
+  goHome() {
+    this.router.navigateByUrl("/");
+  }
 
 
 

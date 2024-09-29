@@ -6,19 +6,27 @@ import { Injectable } from '@angular/core';
 })
 export class ShopService {
 
-  endPoint: string = "http://localhost:8080/api/shops";
+  endPoint: string = "http://localhost:8080/api/shops"; // Define el endpoint base
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(){
-    return this.httpClient.get(this.endPoint); // Podemos poner el then (asincrona), o tratar en el error donde llamamos
+  // Obtener todas las tiendas
+  getAll() {
+    return this.httpClient.get(this.endPoint); // Obtener todas las tiendas
   }
 
-  delete(id: any){
+  // Eliminar una tienda por ID
+  delete(id: any) {
     return this.httpClient.delete(`${this.endPoint}/${id}`);
   }
 
-  /* update(id: any, shop: any){
+  // Actualizar una tienda por ID
+  update(id: any, shopData: any) {
+    return this.httpClient.put(`${this.endPoint}/${id}`, shopData);
+}
+
+  // Crear una nueva tienda
+  create(shop: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
@@ -27,23 +35,11 @@ export class ShopService {
     body.append("address", shop.address);
     body.append("telephone", shop.telephone);
 
-    return this.httpClient.put(`${this.endPoint}/${id}`, body.toString(), { headers });
-  } */
-
-  create(shop: any){
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-
-    const body = new URLSearchParams();
-    body.append("address", shop.address);
-    body.append("telephone", shop.telephone);
-
-    return this.httpClient.post(this.endPoint, body.toString(), { headers }); // endPoint en el pdf es serverUrl
+    return this.httpClient.post(this.endPoint, body.toString(), { headers }); // Crear tienda con datos codificados
   }
 
-  getShopById(id: any){
+  // Obtener una tienda por ID
+  getShopById(id: any) {
     return this.httpClient.get(`${this.endPoint}/${id}`);
   }
-
 }
