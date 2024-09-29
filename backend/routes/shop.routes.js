@@ -9,7 +9,7 @@ module.exports = app => {
 
     router.get("/:id", shops.findOne); // Aqui puede estar el error
     
-    // router.put("/:id", shops.update);
+    router.put("/:id", shops.update);
 
     router.delete("/:id", shops.delete);
 

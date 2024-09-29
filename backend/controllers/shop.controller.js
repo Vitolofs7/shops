@@ -40,24 +40,22 @@ exports.findAll = (req, res) => { // get
 exports.findOne = (req, res) => { // otro get
     const id = req.params.id;
 
-    console.log(`Obteniendo tienda con id=${id}`);
-
-    Shop.getShopById(id)
+    Shop.findByPk(id) // Asegúrate de usar el método correcto para buscar por ID
         .then((data) => {
-            if(!data){
-                return res.status(404).send({ message: "Storage not found" });
+            if (!data) {
+                return res.status(404).send({ message: "Tienda no encontrada" });
             }
             res.status(200).send(data);
         })
         .catch((error) => {
             res.status(500).send({
-                message: "Error obtaining store",
+                message: "Error obteniendo la tienda",
                 error: error.message
             });
         });
-}
+};
 
-/* exports.update = (req, res) => { // put
+ exports.update = (req, res) => { // put
     const id = req.params.id;
 
     Shop.update (
@@ -80,7 +78,7 @@ exports.findOne = (req, res) => { // otro get
             error: error.message
         });
     });
-}; */
+}; 
 
 exports.delete = (req, res) => { // delete
     const id = req.params.id; // No se envia en el body, se envia como parametro
