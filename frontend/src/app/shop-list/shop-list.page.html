@@ -17,8 +17,13 @@
 
   <ion-list>
     <ion-item *ngFor="let s of shops">
-      <ion-label>Address: {{s.address}}</ion-label>
-      <ion-label>Telephone: {{s.telephone}}</ion-label>
+      <!-- <ion-label>Address: {{s.address}}</ion-label>
+      <ion-label>Telephone: {{s.telephone}}</ion-label> -->
+
+      <ion-label>
+        <h2>Address: {{s.address}}</h2>
+        <p>Telephone: {{s.telephone}}</p>
+      </ion-label>
       <ion-button color="primary" (click)="updateThis(s.id)">Update</ion-button> <!-- Botón de Actualizar -->
       <ion-button color="danger" (click)="deleteThis(s.id)">Delete</ion-button> <!-- Botón de Eliminar -->
     </ion-item>

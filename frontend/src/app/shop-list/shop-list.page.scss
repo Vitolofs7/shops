@@ -1,3 +1,87 @@
-.shop-list-header {
-    background-color: red;
-}
+/* Estilos generales */
+:host {
+    display: block;
+    padding: 16px;
+    font-family: 'Arial', sans-serif; /* Cambia la fuente a una más moderna */
+  }
+  
+  /* Estilo para el encabezado de la tienda */
+  .shop-list-header {
+    font-size: 28px; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 20px; /* Espacio inferior */
+    text-align: center; /* Centrar el texto */
+    color: #4a4a4a; /* Color de texto oscuro */
+  }
+  
+  /* Estilos para la lista de tiendas */
+  ion-list {
+    margin-top: 10px; /* Espacio superior */
+  }
+  
+  /* Estilo para los items de la lista */
+  ion-item {
+    border-radius: 12px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espacio entre items */
+    padding: 15px; /* Relleno interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animación suave */
+  }
+  
+  /* Efecto hover en los items */
+  ion-item:hover {
+    transform: translateY(-2px); /* Levantar ligeramente el item */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+  }
+  
+  /* Estilo para los títulos y textos dentro de los items */
+  ion-label h2 {
+    font-size: 20px; /* Tamaño de fuente para el título */
+    margin: 0; /* Sin margen */
+    color: #007bff; /* Color azul para el título */
+  }
+  
+  ion-label p {
+    margin: 5px 0 0; /* Espacio superior */
+    color: #666; /* Color gris para el texto */
+    font-size: 16px; /* Tamaño de fuente del texto */
+  }
+  
+  /* Estilos para los botones */
+  ion-button {
+    margin: 5px; /* Margen para los botones */
+    border-radius: 20px; /* Bordes redondeados para los botones */
+    font-weight: bold; /* Negrita para los textos de los botones */
+  }
+  
+  /* Estilo para el botón de actualización */
+  ion-button[color="primary"] {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+  }
+  
+  ion-button[color="primary"]:hover {
+    background-color: #0056b3; /* Color más oscuro en hover */
+  }
+  
+  /* Estilo para el botón de eliminar */
+  ion-button[color="danger"] {
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: white; /* Texto blanco */
+  }
+  
+  ion-button[color="danger"]:hover {
+    background-color: #c82333; /* Color más oscuro en hover */
+  }
+  
+  /* Estilo para el botón "Go Home" */
+  ion-button[expand="full"] {
+    margin-top: 20px; /* Espacio superior para el botón de "Go Home" */
+    background-color: #28a745; /* Color de fondo verde */
+    color: #ffffff; /* Color del texto blanco */
+  }
+  
+  ion-button[expand="full"]:hover {
+    background-color: #218838; /* Color más oscuro en hover */
+  }
+  
